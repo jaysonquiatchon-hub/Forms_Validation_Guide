@@ -1,6 +1,20 @@
 <x-layout :title="$course->code">
     <h1>{{ $course->code }} — {{ $course->title }}</h1>
 
+    @if ($course->image_path)
+        <div>
+            <strong>Course Image:</strong>
+            <br>
+            <img
+                src="{{ asset('storage/' . $course->image_path) }}"
+                alt="{{ $course->title }}"
+                style="max-width: 300px; height: auto; margin-top: 10px;"
+            >
+        </div>
+    @else
+        <p>No course image uploaded.</p>
+    @endif
+
     <p>
         <strong>Description:</strong>
         {{ $course->description ?? 'No description available.' }}
